@@ -1,5 +1,7 @@
 <template>
-Home
+  <div id="explorer" class="bg-gray-500 w-64">
+    Explorer
+  </div>
 </template>
 
 <script>

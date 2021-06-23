@@ -22,6 +22,9 @@ async function createWindow() {
   // Create the browser window.
   win = new BrowserWindow({
     frame: false,
+    resizable: true,
+    maximizable: true,
+    minimizable: true,
     transparent: true,
     alwaysOnTop: true,
     vibrancy: 'ultra-dark',

@@ -7,8 +7,9 @@
 
 ## File structure
  Most, if not all, work should be done within `src` because everything outside of that directory are either temporary or environmental files.
- * `src/assets` - Contains static files like images and styles
- * `src/components/views` - Contains app UI layout
- * `src/components/modules` - Contains modules.  Modules are sections/areas of the app UI which, typically, have a local state and can be reused moved etc.
- * `src/components/elements` - Contains reusable elements like buttons, tabs etc. which typically do not have a local state (or at least, not a complex state)
+ * `public/*` - Contains static files that are ready for production as is.
+ * `src/assets/*` - Contains static files like images and styles that gets imported to the code and packed for distribution.
+ * `src/components/views/*` - Contains app UI layout
+ * `src/components/modules/*` - Contains modules.  Modules are sections/areas of the app UI which, typically, have a local state and can be reused moved etc.
+ * `src/components/elements/*` - Contains reusable elements like buttons, tabs etc. which typically do not have a local state (or at least, not a complex state)
 

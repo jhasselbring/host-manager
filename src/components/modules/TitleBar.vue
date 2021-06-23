@@ -5,38 +5,48 @@
     </div>
 
     <div id="title-bar-btns" class="absolute top-0 right-0">
-      <button @click="minimize" class="h-7 w-11 hover:bg-green-400 focus:outline-none outline-none">➖</button>
-      <button @click="maximize" class="h-7 w-11 hover:bg-green-400 focus:outline-none outline-none">⬛</button>
-      <button @click="close" class="h-7 w-11 hover:bg-red-400 cursor-pointer">❌</button>
+      <button @click="minimize" class="h-7 w-11 hover:bg-green-400 focus:outline-none outline-none">
+        <img src="/ui/Minimize.png" alt="">
+      </button>
+      <button v-if="data.isMaximized" @click="restore" class="h-7 w-11 hover:bg-green-400 focus:outline-none outline-none">
+        <img src="/ui/Restore.png" alt="">
+      </button>
+      <button v-else @click="maximize" class="h-7 w-11 hover:bg-green-400 focus:outline-none outline-none">
+        <img src="/ui/maximize.png" alt="">
+      </button>
+      <button @click="close" class="h-7 w-11 hover:bg-red-400 focus:outline-none outline-none">
+        <img src="/ui/Close.png" alt="">
+      </button>
     </div>
   </div>
 </template>
 
 <script>
 import {remote} from "electron";
-
+import {reactive} from 'vue';
 export default {
   name: "TitleBar",
   setup() {
-
+    let data = reactive({
+      isMaximized: false
+    });
     const close = () => {
-      let win = remote.getCurrentWindow();
       win.close();
     }
     const minimize = () => {
-      let win = remote.getCurrentWindow();
       win.minimize();
     }
     const restore = () => {
-      let win = remote.getCurrentWindow();
-      win.restore();
+      win.unmaximize();
+      data.isMaximized = false;
     }
     const maximize = () => {
-      let win = remote.getCurrentWindow();
       win.maximize();
+      data.isMaximized = true;
     }
     return {
-      close, minimize, maximize, restore
+      close, minimize, maximize, restore,
+      data
     }
   }
 }
