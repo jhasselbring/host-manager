@@ -1,12 +1,13 @@
 <template>
-  <div id="title-bar" class="cursor-move bg-green-500 text-white p-1 h-9">
-    <div id="title">
+  <div id="title-bar" class="cursor-move bg-green-500 text-white">
+    <div id="title" class="h-7 p-1 leading-0">
       &nbsp;🔥 Host Manager - v2.0.0 <span id="active"></span>
     </div>
 
-    <div id="title-bar-btns" class="absolute top-1 right-1">
-      <button @click="min" class="purple">➖</button>
-      <button @click="close" class="purple  cursor-pointer">❌</button>
+    <div id="title-bar-btns" class="absolute top-0 right-0">
+      <button @click="minimize" class="h-7 w-11 hover:bg-green-400 focus:outline-none outline-none">➖</button>
+      <button @click="maximize" class="h-7 w-11 hover:bg-green-400 focus:outline-none outline-none">⬛</button>
+      <button @click="close" class="h-7 w-11 hover:bg-red-400 cursor-pointer">❌</button>
     </div>
   </div>
 </template>
@@ -20,14 +21,22 @@ export default {
 
     const close = () => {
       let win = remote.getCurrentWindow();
-      console.log(win);
       win.close();
     }
-    const min = () => {
-      // this.$parent.toggleBody();
+    const minimize = () => {
+      let win = remote.getCurrentWindow();
+      win.minimize();
+    }
+    const restore = () => {
+      let win = remote.getCurrentWindow();
+      win.restore();
+    }
+    const maximize = () => {
+      let win = remote.getCurrentWindow();
+      win.maximize();
     }
     return {
-      close, min
+      close, minimize, maximize, restore
     }
   }
 }
