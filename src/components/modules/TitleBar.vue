@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import {remote} from "electron";
 import {reactive} from 'vue';
 export default {
   name: "TitleBar",
