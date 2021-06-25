@@ -1,9 +1,7 @@
 <template>
   <div class="flex resizable" :style="{width: data.width + 'px'}">
-    <div class="content p-2 bg-gray-700 text-white">
-      content
-      asd<br>
-      asd
+    <div class="content bg-gray-700 text-white">
+      <slot/>
     </div>
     <div v-on:drag="onDrag"
          v-on:mousedown="onMouseDown"
@@ -32,7 +30,7 @@ export default {
     }
     const onDrag = (e) => {
       console.log('Drag', e.clientX);
-      if(e.clientX > 10){
+      if (e.clientX > 10) {
         let width = data.startWidth + (e.clientX - data.startX);
         data.width = width
       }
@@ -47,13 +45,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.resizable{
+.resizable {
   height: calc(100% - 28px);
 
-  &>.content{
+  & > .content {
     width: 100%
   }
-  &>.resizer {
+
+  & > .resizer {
     cursor: col-resize;
     height: 100%
   }

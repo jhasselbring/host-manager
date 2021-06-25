@@ -5,6 +5,7 @@ import router from './router'
 import store from '@/store';
 store.init();
 
-
-
-createApp(App).provide('store', store).use(router).mount('#app');
+createApp(App)
+    .provide('store', store)
+    .use(router)
+    .mount('#app');
